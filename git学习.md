@@ -1,4 +1,4 @@
-# git学习
+# git学习笔记
 ## git基础
 ### 前提
 1、安装git
@@ -33,6 +33,8 @@ $ git config --global user.email 'your email'
 ```
 ### git常用操作
 
+<img src="./work.jpg" alt="work" style="zoom:67%;" />
+
 1、建立git仓库
 
 两种场景：
@@ -41,7 +43,7 @@ $ git config --global user.email 'your email'
 ```bash
 $ cd 项目文件夹
 $ git init
-```   
+```
 (2)新建项目
 ```bash
 $ cd 工作空间
@@ -49,7 +51,71 @@ $ git init 项目名称（创建一个新的项目）
 ```
 创建好的git仓库，包含`.git`文件，这是git项目的核心
 
-2、
-## git的常用场景
+2、提交
+(1)从远程仓库克隆代码：`git clone <url>`
+(2)将文件添加到暂存区：`git add`
+
+```bash
+$ git add <file_name>   //添加一个文件，直接加上文件名，支持多文件
+$ git add <dir_name>    //添加整个目录（包含子目录）
+$ git add .             //添加当前目录所有文件
+```
+(3)查看当前git的状态：`git status`，使用参数`-s`获得简洁的输出结果
+(4)将暂存区内容提交到本地仓库：`git commit`
+
+```bash
+$ git commit -m <message>   //加上一些提交信息
+$ git commit <file_name>    //提交某一个文件
+$ git commit -a             //省去git add过程
+```
+
+3、文件操作
+
+(1)重命名文件：`git mv <file_name> <new_file_name>`
+
+(2)删除文件：`git rm`
+
+删除工作区的文件，并且将这次删除放入暂存区
+
+注意： 要删除的文件要和当前版本库文件的内容相同，否则需要加参数`-f`
+```bash
+$ git rm <file_name>  
+```
+如果文件已经`add`到暂存区，则必须强制删除，使用参数`-f`
+```bash
+$ git rm -f <file_name>
+```
+如果想把文件从暂存区域移除，但仍然希望保留在当前工作目录中，使用参数`--cached`
+```bash
+$ git rm --cached <file_name>
+```
+4、回退版本
+
+`git reset [--soft | --mixed | --hard] [HEAD]`
+
+(1)参数
+
+`--soft`：参数用于回退到某个版本；
+`--mixed`：默认，可以不加。用于重置暂存区的文件与上一次的提交(commit)保持一致，工作区文件内容保持不变；
+`--hard`：撤销工作区中所有未提交的修改内容，将暂存区与工作区都回到上一次版本，并删除之前的所有信息提交。
+
+注意：`--hard`要慎用，会删除工作区已修改，但未提交的内容
+
+(2)HEAD
+
+`[HEAD]`是指回退的版本，可以是具体的版本号，也可以是上一个版本等等
+
+5、日志
+一般使用`git log`查看历史提交记录，通过添加参数实现更多样的功能
+```bash
+$ git log --oneline  //查看历史记录的简洁版本
+$ git log --graph    //图形化，清晰的看出分支、合并的变化
+$ git log --n4       //最近的4个记录
+$ git log --all      //查看所有分支的记录
+```
+
+## git分支管理
+
+## git的复杂场景
 ## git与github
 ## git与gitLab
