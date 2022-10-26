@@ -35,13 +35,21 @@ $ git config --global user.email 'your email'
 
 1、建立git仓库
 
-两种场景
-1. 已有项目代码，使用git管理项目代码
+两种场景：
 
-    
-2. 新建项目
+(1)已有项目代码，使用git管理项目代码
+```bash
+$ cd 项目文件夹
+$ git init
+```   
+(2)新建项目
+```bash
+$ cd 工作空间
+$ git init 项目名称（创建一个新的项目）
+```
+创建好的git仓库，包含`.git`文件，这是git项目的核心
 
-
-## git常用场景
+2、
+## git的常用场景
 ## git与github
 ## git与gitLab
